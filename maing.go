@@ -243,7 +243,7 @@ func main() {
 
 	for _, f := range records {
 		personFound := User{}
-		if err := json.Unmarshal([]byte(f), &person); err != nil {
+		if err := json.Unmarshal([]byte(f), &personFound); err != nil {
 			fmt.Println(err)
 		}
 		allUsers = append(allUsers, personFound)
