@@ -1,4 +1,4 @@
-package main
+package localDB
 
 import (
 	"encoding/json"
@@ -36,6 +36,9 @@ type Options struct {
 }
 
 func New(dir string, options *Options) (*Driver, error) {
+
+	fmt.Printf("DB Versión %s \n ", version)
+
 	dir = filepath.Clean(dir)
 
 	opts := Options{}
@@ -208,50 +211,53 @@ type User struct {
 	Address  Address
 }
 
-func main() {
-	dir := "./"
+// func localDB() {
 
-	db, err := New(dir, nil)
+// 	fmt.Printf("DB Versión %s \n ", version)
 
-	if err != nil {
-		fmt.Println("is a feature")
-	}
+// 	dir := "./"
 
-	person := []User{
-		{"Fede", "Iglesias", "28", Address{"Ponferrada", "7"}},
-		{"Remo", "Pepe", "10", Address{"Bs.As.", "10"}},
-	}
+// 	db, err := New(dir, nil)
 
-	for _, value := range person {
-		db.Write("users", value.Name, User{
-			Name:     value.Name,
-			LastName: value.LastName,
-			Age:      value.Age,
-			Address:  value.Address,
-		})
-	}
+// 	if err != nil {
+// 		fmt.Println("is a feature")
+// 	}
 
-	records, err := db.ReadAll("users")
+// 	person := []User{
+// 		{"Fede", "Iglesias", "28", Address{"Ponferrada", "7"}},
+// 		{"Remo", "Pepe", "10", Address{"Bs.As.", "10"}},
+// 	}
 
-	if err != nil {
-		fmt.Println("Is another feature")
-	}
+// 	for _, value := range person {
+// 		db.Write("users", value.Name, User{
+// 			Name:     value.Name,
+// 			LastName: value.LastName,
+// 			Age:      value.Age,
+// 			Address:  value.Address,
+// 		})
+// 	}
 
-	fmt.Println(records)
+// 	records, err := db.ReadAll("users")
 
-	allUsers := []User{}
+// 	if err != nil {
+// 		fmt.Println("Is another feature")
+// 	}
 
-	for _, f := range records {
-		personFound := User{}
-		if err := json.Unmarshal([]byte(f), &personFound); err != nil {
-			fmt.Println(err)
-		}
-		allUsers = append(allUsers, personFound)
-	}
-	fmt.Println(allUsers)
+// 	fmt.Println(records)
 
-	// if err = db.Delete("user","Fede"); err != nil{
-	// 	fmt.Println("I swear is a feature")
-	// }
+// 	allUsers := []User{}
 
-}
+// 	for _, f := range records {
+// 		personFound := User{}
+// 		if err := json.Unmarshal([]byte(f), &personFound); err != nil {
+// 			fmt.Println(err)
+// 		}
+// 		allUsers = append(allUsers, personFound)
+// 	}
+// 	fmt.Println(allUsers)
+
+// 	// if err = db.Delete("user","Fede"); err != nil{
+// 	// 	fmt.Println("I swear is a feature")
+// 	// }
+
+// }
