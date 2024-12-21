@@ -1,4 +1,4 @@
-package localDB
+package local_db
 
 import (
 	"encoding/json"
@@ -11,7 +11,7 @@ import (
 	"github.com/jcelliott/lumber"
 )
 
-const version = "1.0.0"
+const version = "0.0.1"
 
 type (
 	Logger interface {
