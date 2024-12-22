@@ -1,4 +1,4 @@
-module DBGolang
+module github.com/FedericoIglesias/local_db
 
 go 1.22.4
 
