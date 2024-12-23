@@ -11,7 +11,7 @@ import (
 	"github.com/jcelliott/lumber"
 )
 
-const version = "0.0.1"
+const version = "0.0.4"
 
 type (
 	Logger interface {
@@ -198,7 +198,3 @@ func stat(path string) (fi os.FileInfo, err error) {
 	}
 	return
 }
-
-
-
-
